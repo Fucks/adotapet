@@ -2,9 +2,11 @@ package br.org.adotapet.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -44,14 +46,26 @@ public class Anuncio {
     @Setter
     @Column
     private String tipo;
+    
+    @Getter
+    @Setter
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    private AnimalPerdido animalPerdido;
+    
+    @Getter
+    @Setter
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    private Doacao doacao;
 
-    public Anuncio(Long id, String foto, String descricao, String tipo) {
+    public Anuncio(Long id, String foto, String descricao, String tipo, AnimalPerdido animalPerdido, Doacao doacao) {
         this.id = id;
         this.foto = foto;
         this.descricao = descricao;
         this.tipo = tipo;
+        this.animalPerdido = animalPerdido;
+        this.doacao = doacao;
     }
-
+    
     public Anuncio() {
     }
     

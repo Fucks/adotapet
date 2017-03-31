@@ -23,10 +23,9 @@ public class PersistenceConfig {
 
     @Bean
     public DataSource dataSource() {
-        final String DB_URL = System.getProperty("user.home");
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.sqlite.JDBC");
-        dataSourceBuilder.url("jdbc:sqlite:" + DB_URL + "/your.db");
+        dataSourceBuilder.url("jdbc:sqlite:/db/your.db");
         return dataSourceBuilder.build();
     }
 }
